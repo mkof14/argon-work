@@ -2,7 +2,7 @@
 
 ## 1. Vercel project setup
 1. Import repository into Vercel.
-2. Set **Root Directory** to `apps/web`.
+2. Set **Root Directory** to `apps/web` (critical for web-only deploys in this monorepo).
 3. Framework preset: `Next.js`.
 4. Node version: `20.x`.
 
