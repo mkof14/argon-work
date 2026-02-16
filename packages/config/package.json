@@ -1,0 +1,12 @@
+{
+  "name": "@agron/config",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo \"@agron/config build skipped\"",
+    "lint": "echo \"@agron/config lint skipped\"",
+    "test": "echo \"@agron/config tests skipped\""
+  }
+}

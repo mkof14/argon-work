@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "title": "Sobre AGRON | Formación Profesional en Drones",
+    "description": "AGRON ofrece formación estructurada alineada con FAA Part 107, combinando conocimiento regulatorio, simulación y disciplina operativa."
+  },
+  "additions": {
+    "operationalFramework": {
+      "title": "Marco Operativo de Entrenamiento",
+      "content": "El entrenamiento integra FAA Part 107, simulación estructurada y escenarios prácticos con resultados medibles."
+    },
+    "experienceAdaptation": {
+      "title": "Experiencia Adaptada a Estándares Americanos",
+      "content": "Adaptamos experiencia operativa real dentro del marco legal y regulatorio de Estados Unidos."
+    },
+    "safetySystem": {
+      "title": "La Seguridad es un Sistema",
+      "content": "Cada programa incluye listas de verificación, validación de espacio aéreo y protocolos de emergencia."
+    },
+    "internationalPerspective": {
+      "title": "Perspectiva Internacional",
+      "content": "Formación disponible en múltiples idiomas con cumplimiento regulatorio específico por jurisdicción."
+    },
+    "commitment": {
+      "title": "Nuestro Compromiso",
+      "content": "Formación estructurada. Desarrollo medible. Cumplimiento normativo. Preparación práctica."
+    }
+  }
+}

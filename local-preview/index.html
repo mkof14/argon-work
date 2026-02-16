@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AGRON Preview</title>
+  <style>
+    :root { --bg:#f3f7ea; --ink:#102314; --brand:#3e8f3c; --line:#c8d4bf; --card:#ffffffcc; }
+    *{box-sizing:border-box} body{margin:0;font-family:"Space Grotesk","Avenir Next",sans-serif;background:
+    radial-gradient(circle at 10% 10%, #d9efbc, transparent 30%), radial-gradient(circle at 80% 20%, #ffe0bb, transparent 35%), var(--bg); color:var(--ink)}
+    .shell{max-width:1100px;margin:0 auto;padding:24px}
+    .nav,.card{background:var(--card);border:1px solid var(--line);border-radius:16px}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;gap:16px;flex-wrap:wrap}
+    .hero{margin-top:16px;padding:36px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(140deg,#f8ffed 0%,#f6fff5 55%,#fff5e8 100%)}
+    .hero h1{font-size:clamp(30px,6vw,58px);line-height:1.03;margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:16px}
+    .card{padding:16px} .btn{display:inline-block;background:var(--brand);color:#fff;border-radius:12px;padding:10px 14px;font-weight:700}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="nav">
+      <div><strong>AGRON</strong><div style="font-size:12px;opacity:.8">Drone Academy + Ops</div></div>
+      <div>Главная | Программы | Тарифы | Контакты</div>
+      <a class="btn" href="#">Войти</a>
+    </header>
+    <section class="hero">
+      <h1>AGRON: обучение, сертификация, симуляция и реальные миссии</h1>
+      <p>Локальный preview сайта: desktop/mobile адаптивный интерфейс с архитектурой для full-stack платформы.</p>
+    </section>
+    <section class="grid">
+      <article class="card">Part 107 и сертификации</article>
+      <article class="card">AI-скоринг симуляций</article>
+      <article class="card">Агро-аналитика и репорты</article>
+      <article class="card">Платежная система Stripe</article>
+      <article class="card">B2B роли и управление</article>
+      <article class="card">Web + Mobile контур</article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AGRON mark">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5eef6"/>
+      <stop offset="1" stop-color="#9fb3c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="44" fill="#0f2338"/>
+  <circle cx="128" cy="128" r="94" fill="none" stroke="#ff7a1a" stroke-width="8"/>
+  <circle cx="128" cy="128" r="72" fill="none" stroke="#2ed4ff" stroke-width="4" opacity="0.7"/>
+  <path d="M68 184L112 72h32l44 112h-28l-8-22H104l-8 22H68zm44-46h32l-16-46-16 46z" fill="url(#g)"/>
+</svg>

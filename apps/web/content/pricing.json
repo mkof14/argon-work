@@ -1,0 +1,207 @@
+{
+  "en": {
+    "title": "Pricing and Payments",
+    "emailLabel": "Checkout email",
+    "checkout": "Proceed to Checkout",
+    "creating": "Creating session...",
+    "error": "Unable to create a payment session. Check API and Stripe configuration.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$49/mo",
+        "priceId": "price_starter_monthly",
+        "items": [
+          "Part 107 track",
+          "Practice tests and progress analytics",
+          "1 simulation profile"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": "$149/mo",
+        "priceId": "price_pro_monthly",
+        "items": [
+          "All training tracks",
+          "AI reports",
+          "Advanced simulations",
+          "Instructor support"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "priceId": "price_enterprise_custom",
+        "items": [
+          "B2B role management",
+          "SLA and integrations",
+          "Multi-organization access",
+          "Audit and governance controls"
+        ]
+      }
+    ]
+  },
+  "ru": {
+    "title": "Тарифы и оплата",
+    "emailLabel": "Email для оплаты",
+    "checkout": "Перейти к оплате",
+    "creating": "Создаем сессию...",
+    "error": "Не удалось создать платежную сессию. Проверьте API и настройки Stripe.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$49/мес",
+        "priceId": "price_starter_monthly",
+        "items": [
+          "Трек Part 107",
+          "Тесты и аналитика прогресса",
+          "1 профиль симуляции"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": "$149/мес",
+        "priceId": "price_pro_monthly",
+        "items": [
+          "Все программы",
+          "AI-отчеты",
+          "Расширенные симуляции",
+          "Поддержка инструктора"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Индивидуально",
+        "priceId": "price_enterprise_custom",
+        "items": [
+          "B2B управление ролями",
+          "SLA и интеграции",
+          "Несколько организаций",
+          "Аудит и контроль"
+        ]
+      }
+    ]
+  },
+  "uk": {
+    "title": "Тарифи та оплата",
+    "emailLabel": "Email для оплати",
+    "checkout": "Перейти до оплати",
+    "creating": "Створюємо сесію...",
+    "error": "Не вдалося створити платіжну сесію. Перевірте API та Stripe.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$49/міс",
+        "priceId": "price_starter_monthly",
+        "items": [
+          "Трек Part 107",
+          "Тести та аналітика прогресу",
+          "1 профіль симуляції"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": "$149/міс",
+        "priceId": "price_pro_monthly",
+        "items": [
+          "Усі програми",
+          "AI-звіти",
+          "Розширені симуляції",
+          "Підтримка інструктора"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Індивідуально",
+        "priceId": "price_enterprise_custom",
+        "items": [
+          "B2B керування ролями",
+          "SLA та інтеграції",
+          "Доступ для кількох організацій",
+          "Аудит і контроль"
+        ]
+      }
+    ]
+  },
+  "ar": {
+    "title": "الأسعار والدفع",
+    "emailLabel": "البريد الإلكتروني للدفع",
+    "checkout": "المتابعة إلى الدفع",
+    "creating": "جارٍ إنشاء الجلسة...",
+    "error": "تعذر إنشاء جلسة الدفع. تحقق من إعدادات API وStripe.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$49/شهريًا",
+        "priceId": "price_starter_monthly",
+        "items": [
+          "مسار Part 107",
+          "اختبارات تدريبية وتحليلات التقدم",
+          "ملف محاكاة واحد"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": "$149/شهريًا",
+        "priceId": "price_pro_monthly",
+        "items": [
+          "جميع المسارات التدريبية",
+          "تقارير ذكاء اصطناعي",
+          "محاكاة متقدمة",
+          "دعم المدرب"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "مخصص",
+        "priceId": "price_enterprise_custom",
+        "items": [
+          "إدارة أدوار B2B",
+          "SLA وتكاملات",
+          "وصول متعدد المؤسسات",
+          "ضوابط التدقيق والحوكمة"
+        ]
+      }
+    ]
+  },
+  "he": {
+    "title": "מחירים ותשלומים",
+    "emailLabel": "אימייל לתשלום",
+    "checkout": "המשך לתשלום",
+    "creating": "יוצר סשן...",
+    "error": "לא ניתן ליצור סשן תשלום. בדקו את הגדרות API ו-Stripe.",
+    "plans": [
+      {
+        "name": "Starter",
+        "price": "$49/חודש",
+        "priceId": "price_starter_monthly",
+        "items": [
+          "מסלול Part 107",
+          "מבחני תרגול וניתוח התקדמות",
+          "פרופיל סימולציה אחד"
+        ]
+      },
+      {
+        "name": "Professional",
+        "price": "$149/חודש",
+        "priceId": "price_pro_monthly",
+        "items": [
+          "כל מסלולי ההכשרה",
+          "דוחות AI",
+          "סימולציות מתקדמות",
+          "תמיכת מדריך"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "מותאם אישית",
+        "priceId": "price_enterprise_custom",
+        "items": [
+          "ניהול תפקידי B2B",
+          "SLA ואינטגרציות",
+          "גישה רב-ארגונית",
+          "בקרות ביקורת וממשל"
+        ]
+      }
+    ]
+  }
+}

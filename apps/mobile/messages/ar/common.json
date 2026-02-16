@@ -1,0 +1,22 @@
+{
+  "appName": "AGRON Mobile",
+  "language": "اللغة",
+  "loginTitle": "تسجيل الدخول عبر الرابط السحري",
+  "emailPlaceholder": "البريد الإلكتروني",
+  "sendMagicLink": "إرسال الرابط السحري",
+  "verifyToken": "تأكيد الرمز",
+  "homeTitle": "مركز البرامج",
+  "simulator": "المحاكي",
+  "progress": "التقدم",
+  "upgrade": "الترقية",
+  "settings": "الإعدادات",
+  "drillHover": "تثبيت التحويم",
+  "drillLanding": "هبوط دقيق",
+  "drillWind": "تصحيح الانجراف",
+  "startDrill": "بدء التمرين",
+  "submitResult": "إرسال النتيجة",
+  "restorePurchases": "استعادة المشتريات",
+  "continueFree": "المتابعة مجاناً",
+  "proMonthly": "Pro شهري",
+  "proAnnual": "Pro سنوي"
+}

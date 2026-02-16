@@ -1,0 +1,22 @@
+{
+  "appName": "AGRON Mobile",
+  "language": "שפה",
+  "loginTitle": "כניסה עם קישור קסם",
+  "emailPlaceholder": "אימייל",
+  "sendMagicLink": "שלח קישור קסם",
+  "verifyToken": "אמת טוקן",
+  "homeTitle": "מרכז תוכניות",
+  "simulator": "סימולטור",
+  "progress": "התקדמות",
+  "upgrade": "שדרוג",
+  "settings": "הגדרות",
+  "drillHover": "ייצוב ריחוף",
+  "drillLanding": "נחיתה מדויקת",
+  "drillWind": "תיקון סחיפת רוח",
+  "startDrill": "התחל תרגיל",
+  "submitResult": "שלח תוצאה",
+  "restorePurchases": "שחזר רכישות",
+  "continueFree": "המשך חינם",
+  "proMonthly": "Pro חודשי",
+  "proAnnual": "Pro שנתי"
+}

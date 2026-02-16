@@ -1,0 +1,22 @@
+{
+  "appName": "AGRON Mobile",
+  "language": "Idioma",
+  "loginTitle": "Iniciar con Magic Link",
+  "emailPlaceholder": "Correo",
+  "sendMagicLink": "Enviar Magic Link",
+  "verifyToken": "Verificar token",
+  "homeTitle": "Centro de Programas",
+  "simulator": "Simulador",
+  "progress": "Progreso",
+  "upgrade": "Mejorar",
+  "settings": "Ajustes",
+  "drillHover": "Hover Box",
+  "drillLanding": "Aterrizaje de precisión",
+  "drillWind": "Corrección de deriva",
+  "startDrill": "Iniciar ejercicio",
+  "submitResult": "Enviar resultado",
+  "restorePurchases": "Restaurar compras",
+  "continueFree": "Continuar gratis",
+  "proMonthly": "Pro Mensual",
+  "proAnnual": "Pro Anual"
+}

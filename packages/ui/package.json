@@ -1,0 +1,12 @@
+{
+  "name": "@agron/ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo \"@agron/ui build skipped\"",
+    "lint": "echo \"@agron/ui lint skipped\"",
+    "test": "echo \"@agron/ui tests skipped\""
+  }
+}

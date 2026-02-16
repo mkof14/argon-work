@@ -1,0 +1,107 @@
+{
+  "en": {
+    "title": "Training Programs",
+    "tracks": [
+      {
+        "title": "Part 107",
+        "description": "Knowledge and test preparation aligned with FAA Part 107 standards."
+      },
+      {
+        "title": "Flight Skills",
+        "description": "Hands-on flight blocks, mission planning, and safety-first practical drills."
+      },
+      {
+        "title": "Simulator App",
+        "description": "Mobile and desktop simulation missions with scoring and replay analytics."
+      },
+      {
+        "title": "Advanced / Industry",
+        "description": "Agriculture, inspection, security, and emergency response training tracks."
+      }
+    ]
+  },
+  "ru": {
+    "title": "Программы обучения",
+    "tracks": [
+      {
+        "title": "Part 107",
+        "description": "Подготовка к экзамену и нормативам FAA Part 107."
+      },
+      {
+        "title": "Летные навыки",
+        "description": "Практика полетов, планирование миссий и обучение безопасной работе."
+      },
+      {
+        "title": "Приложение-симулятор",
+        "description": "Сценарии тренировок на мобильных и десктопных устройствах с оценкой."
+      },
+      {
+        "title": "Продвинутые / отраслевые",
+        "description": "Треки для агросектора, инспекций, безопасности и экстренных служб."
+      }
+    ]
+  },
+  "uk": {
+    "title": "Навчальні програми",
+    "tracks": [
+      {
+        "title": "Part 107",
+        "description": "Підготовка до іспиту та вимог FAA Part 107."
+      },
+      {
+        "title": "Льотні навички",
+        "description": "Практичні польоти, планування місій і безпекові тренування."
+      },
+      {
+        "title": "Додаток-симулятор",
+        "description": "Тренувальні місії для мобільної та десктопної версій з оцінюванням."
+      },
+      {
+        "title": "Поглиблені / галузеві",
+        "description": "Треки для агро, інспекцій, безпеки та служб реагування."
+      }
+    ]
+  },
+  "ar": {
+    "title": "برامج التدريب",
+    "tracks": [
+      {
+        "title": "Part 107",
+        "description": "مسار إعداد معرفي واختبارات متوافق مع متطلبات FAA Part 107."
+      },
+      {
+        "title": "مهارات الطيران",
+        "description": "تدريب عملي على الطيران وتخطيط المهام مع تركيز على السلامة."
+      },
+      {
+        "title": "تطبيق المحاكاة",
+        "description": "مهام محاكاة للهاتف وسطح المكتب مع تقييم وتحليل الأداء."
+      },
+      {
+        "title": "متقدم / صناعي",
+        "description": "مسارات للزراعة والفحص والأمن والاستجابة للطوارئ."
+      }
+    ]
+  },
+  "he": {
+    "title": "תוכניות הכשרה",
+    "tracks": [
+      {
+        "title": "Part 107",
+        "description": "הכנה לבחינה ולדרישות FAA Part 107."
+      },
+      {
+        "title": "מיומנויות טיסה",
+        "description": "אימוני טיסה מעשיים, תכנון משימה ונהלי בטיחות."
+      },
+      {
+        "title": "אפליקציית סימולטור",
+        "description": "משימות סימולציה למובייל ולדסקטופ עם ניקוד וניתוח ביצועים."
+      },
+      {
+        "title": "מתקדם / תעשייתי",
+        "description": "מסלולים לחקלאות, בדיקות, אבטחה ומענה חירום."
+      }
+    ]
+  }
+}

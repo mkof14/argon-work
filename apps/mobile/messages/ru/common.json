@@ -1,0 +1,22 @@
+{
+  "appName": "AGRON Mobile",
+  "language": "Язык",
+  "loginTitle": "Вход по Magic Link",
+  "emailPlaceholder": "Email",
+  "sendMagicLink": "Отправить Magic Link",
+  "verifyToken": "Проверить токен",
+  "homeTitle": "Центр программ",
+  "simulator": "Симулятор",
+  "progress": "Прогресс",
+  "upgrade": "Улучшить",
+  "settings": "Настройки",
+  "drillHover": "Hover Box",
+  "drillLanding": "Точная посадка",
+  "drillWind": "Коррекция ветра",
+  "startDrill": "Начать тренировку",
+  "submitResult": "Отправить результат",
+  "restorePurchases": "Восстановить покупки",
+  "continueFree": "Продолжить бесплатно",
+  "proMonthly": "Pro Месяц",
+  "proAnnual": "Pro Год"
+}

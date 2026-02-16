@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "title": "About AGRON | Professional Drone Training & Operational Readiness",
+    "description": "AGRON delivers structured drone training aligned with FAA Part 107 standards, combining regulatory knowledge, simulator-based practice, and operational discipline."
+  },
+  "additions": {
+    "operationalFramework": {
+      "title": "Operational Training Framework",
+      "content": "AGRON training is built on a structured operational framework rather than fragmented lessons. We combine regulatory knowledge aligned with FAA Part 107, simulator-based repetition, mission-based scenarios, standardized procedures, and risk assessment discipline. Certification is never separated from practical capability."
+    },
+    "experienceAdaptation": {
+      "title": "Experience Adapted to American Standards",
+      "content": "AGRON integrates real-world operational experience and adapts it responsibly within U.S. legal and regulatory frameworks. All programs align with FAA regulations, commercial drone law, civilian safety standards, and corporate compliance requirements."
+    },
+    "safetySystem": {
+      "title": "Safety Is a System, Not a Slogan",
+      "content": "Each program integrates structured checklists, airspace verification, environmental awareness, emergency protocols, and maintenance standards. Professional drone operations are built on predictable systems."
+    },
+    "internationalPerspective": {
+      "title": "International Perspective, American Execution",
+      "content": "AGRON operates globally while maintaining strict jurisdictional compliance. Training is available in English, Spanish, Russian, Ukrainian, Arabic, and Hebrew."
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "content": "Structured learning. Measurable skill development. Regulatory alignment. Practical readiness. Professional accountability."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@agron/types",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo \"@agron/types build skipped\"",
+    "lint": "echo \"@agron/types lint skipped\"",
+    "test": "echo \"@agron/types tests skipped\""
+  }
+}
