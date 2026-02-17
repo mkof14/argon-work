@@ -1,0 +1,12 @@
+[
+  {
+    "id": "3fdbd483-83c1-449c-8ac9-f8c09ce420b7",
+    "name": "DNA Inform Admin",
+    "email": "dnainform@gmail.com",
+    "provider": "credentials",
+    "role": "super_admin",
+    "passwordHash": "012f36a764a4f10048ce4de470503625:5c5048061df60577684cf0bf488a104e07869e8e23d7c2c27898e356f33dc7ecdf073477f50b85769f1f0478231b0f551b2b4d9607241d41f5436a437f94f8d5",
+    "createdAt": "2026-02-17T02:20:19.575Z",
+    "updatedAt": "2026-02-17T03:03:17.577Z"
+  }
+]

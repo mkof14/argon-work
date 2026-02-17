@@ -81,3 +81,11 @@ Quick summary:
 - [ ] Confirm rows are written in Supabase
 - [ ] Verify `robots.txt` and `sitemap.xml`
 - [ ] Validate auth flow (Magic Link + Google OAuth if configured)
+
+## AGRON Work (Job/HR Marketplace)
+
+New strategic docs for the AGRON Work direction are in:
+- `docs/agron-work/01-MARKET-BENCHMARK.md`
+- `docs/agron-work/02-BUSINESS-MODEL.md`
+- `docs/agron-work/03-PLATFORM-ARCHITECTURE.md`
+- `docs/agron-work/04-ROADMAP.md`

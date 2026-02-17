@@ -8,9 +8,12 @@
   ],
   "scripts": {
     "dev:web": "npm run dev -w @agron/web",
+    "dev:work": "npm run dev -w @agron/work-web",
     "dev:api": "npm run dev -w @agron/api",
     "build:web": "npm run build -w @agron/web",
+    "build:work": "npm run build -w @agron/work-web",
     "start:web": "npm run start -w @agron/web",
+    "start:work": "npm run start -w @agron/work-web",
     "build": "npm run build --workspaces",
     "lint": "npm run lint --workspaces",
     "test": "npm run test --workspaces"
