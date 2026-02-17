@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import { resolveDataFile } from "../runtime/data-path";
 
 export type HiringScorecard = {
   id: string;
@@ -66,9 +67,6 @@ export type HiringStore = {
   assessments: HiringAssessment[];
 };
 
-const dataDir = path.join(process.cwd(), "apps/agron-work-web/data");
-const storeFile = path.join(dataDir, "hiring-store.json");
-
 function now() {
   return new Date().toISOString();
 }
@@ -83,17 +81,19 @@ function createInitialStore(): HiringStore {
 }
 
 async function ensureStore() {
-  await mkdir(dataDir, { recursive: true });
+  const storeFile = await resolveDataFile("hiring-store.json");
+  await mkdir(path.dirname(storeFile), { recursive: true });
   try {
     await readFile(storeFile, "utf8");
   } catch {
     const initial = createInitialStore();
     await writeFile(storeFile, `${JSON.stringify(initial, null, 2)}\n`, "utf8");
   }
+  return storeFile;
 }
 
 export async function readHiringStore() {
-  await ensureStore();
+  const storeFile = await ensureStore();
   const raw = await readFile(storeFile, "utf8");
   const parsed = JSON.parse(raw) as Partial<HiringStore>;
   return {
@@ -105,6 +105,7 @@ export async function readHiringStore() {
 }
 
 export async function writeHiringStore(store: HiringStore) {
+  const storeFile = await ensureStore();
   await writeFile(storeFile, `${JSON.stringify(store, null, 2)}\n`, "utf8");
 }
 
@@ -115,4 +116,3 @@ export function createId() {
 export function nowIso() {
   return now();
 }
-

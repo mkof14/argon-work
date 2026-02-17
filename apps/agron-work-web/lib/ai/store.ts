@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import { resolveDataFile } from "../runtime/data-path";
 
 export type AiApplyMode = "preview" | "auto";
 export type AiApplicationStatus =
@@ -63,9 +64,6 @@ export type AiStore = {
   events: AiEvent[];
 };
 
-const dataDir = path.join(process.cwd(), "apps/agron-work-web/data");
-const storeFile = path.join(dataDir, "ai-store.json");
-
 function now() {
   return new Date().toISOString();
 }
@@ -79,17 +77,19 @@ function createInitialStore(): AiStore {
 }
 
 async function ensureStore() {
-  await mkdir(dataDir, { recursive: true });
+  const storeFile = await resolveDataFile("ai-store.json");
+  await mkdir(path.dirname(storeFile), { recursive: true });
   try {
     await readFile(storeFile, "utf8");
   } catch {
     const initial = createInitialStore();
     await writeFile(storeFile, `${JSON.stringify(initial, null, 2)}\n`, "utf8");
   }
+  return storeFile;
 }
 
 export async function readAiStore() {
-  await ensureStore();
+  const storeFile = await ensureStore();
   const raw = await readFile(storeFile, "utf8");
   const parsed = JSON.parse(raw) as Partial<AiStore>;
   return {
@@ -100,6 +100,7 @@ export async function readAiStore() {
 }
 
 export async function writeAiStore(store: AiStore) {
+  const storeFile = await ensureStore();
   await writeFile(storeFile, `${JSON.stringify(store, null, 2)}\n`, "utf8");
 }
 
@@ -141,4 +142,3 @@ export async function appendAiEvent(userId: string, action: AiEvent["action"], d
   });
   await writeAiStore(store);
 }
-

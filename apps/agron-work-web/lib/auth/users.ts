@@ -3,6 +3,7 @@ import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { hashPassword } from "./session";
 import type { Role } from "../platform/store";
+import { resolveDataFile } from "../runtime/data-path";
 
 export type UserRecord = {
   id: string;
@@ -35,9 +36,6 @@ export type UserRecord = {
   updatedAt: string;
 };
 
-const dataDir = path.join(process.cwd(), "apps/agron-work-web/data");
-const usersFile = path.join(dataDir, "users.json");
-
 export function getDefaultRoleForEmail(email: string): Role {
   const superAdmins = (process.env.AGRON_WORK_SUPER_ADMIN_EMAILS ?? "")
     .split(",")
@@ -55,21 +53,24 @@ export function getDefaultRoleForEmail(email: string): Role {
 }
 
 async function ensureStore() {
-  await mkdir(dataDir, { recursive: true });
+  const usersFile = await resolveDataFile("users.json");
+  await mkdir(path.dirname(usersFile), { recursive: true });
   try {
     await readFile(usersFile, "utf8");
   } catch {
     await writeFile(usersFile, "[]\n", "utf8");
   }
+  return usersFile;
 }
 
 async function readUsers() {
-  await ensureStore();
+  const usersFile = await ensureStore();
   const raw = await readFile(usersFile, "utf8");
   return JSON.parse(raw) as UserRecord[];
 }
 
 async function writeUsers(users: UserRecord[]) {
+  const usersFile = await ensureStore();
   await writeFile(usersFile, `${JSON.stringify(users, null, 2)}\n`, "utf8");
 }
 

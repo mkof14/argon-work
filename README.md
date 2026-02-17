@@ -89,3 +89,4 @@ New strategic docs for the AGRON Work direction are in:
 - `docs/agron-work/02-BUSINESS-MODEL.md`
 - `docs/agron-work/03-PLATFORM-ARCHITECTURE.md`
 - `docs/agron-work/04-ROADMAP.md`
+- `docs/agron-work/05-VERCEL-DEPLOY.md`
