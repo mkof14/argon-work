@@ -6,6 +6,7 @@ export const primaryNav = [
 export const corePages = [
   { href: "/", label: "Home" },
   { href: "/faq", label: "FAQ" },
+  { href: "/learning-center", label: "Learning Center" },
   { href: "/search", label: "Search Jobs" },
   { href: "/ai-tools", label: "AI Tools" },
   { href: "/hiring-lab", label: "Hiring Lab" },
@@ -55,6 +56,7 @@ export const footerSections = [
     title: "Main",
     links: [
       { href: "/", label: "Home" },
+      { href: "/learning-center", label: "Learning Center" },
       { href: "/search", label: "Search Jobs" },
       { href: "/specialties", label: "Specialties" },
       { href: "/jobs", label: "Jobs" }
@@ -74,6 +76,7 @@ export const footerSections = [
     title: "For Job Seekers",
     links: [
       { href: "/talent", label: "Job Seeker Hub" },
+      { href: "/learning-center", label: "Learning Center" },
       { href: "/search", label: "Find Jobs" },
       { href: "/ai-tools", label: "AI Tools" },
       { href: "/auth/login?mode=register", label: "Create Account" },
@@ -91,6 +94,7 @@ export const footerSections = [
     links: [
       { href: "/about", label: "About AGRON Work" },
       { href: "/faq", label: "FAQ" },
+      { href: "/learning-center", label: "Learning Center" },
       { href: "/support", label: "Support" },
       { href: "/resources", label: "Resources" },
       { href: "/contact", label: "Contact" }

@@ -43,14 +43,41 @@ type Invite = {
   createdAt: string;
 };
 
+type PipelineStage = "applied" | "screen" | "interview" | "offer" | "hired" | "rejected";
+
+type PipelineCandidate = {
+  id: string;
+  jobPostId: string;
+  candidateEmail: string;
+  candidateName: string;
+  stage: PipelineStage;
+  score: number;
+  source: "direct" | "invite" | "referral";
+  note: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 const sections = [
   "Structured Hiring",
   "Screener Questions",
   "Compensation",
   "Invite to Apply",
+  "ATS Pipeline",
   "Anti-Scam",
   "AI Explainability"
 ] as const;
+
+const pipelineStages: PipelineStage[] = ["applied", "screen", "interview", "offer", "hired", "rejected"];
+
+const stageLabel: Record<PipelineStage, string> = {
+  applied: "Applied",
+  screen: "Screen",
+  interview: "Interview",
+  offer: "Offer",
+  hired: "Hired",
+  rejected: "Rejected"
+};
 
 type Section = (typeof sections)[number];
 
@@ -60,6 +87,7 @@ export function HiringLabWorkspace() {
   const [scorecards, setScorecards] = useState<Scorecard[]>([]);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [invites, setInvites] = useState<Invite[]>([]);
+  const [pipeline, setPipeline] = useState<PipelineCandidate[]>([]);
 
   const [roleTitle, setRoleTitle] = useState("Senior Robotics Integration Engineer");
   const [domain, setDomain] = useState<string>("Robotics");
@@ -80,6 +108,13 @@ export function HiringLabWorkspace() {
   const [inviteSlot, setInviteSlot] = useState("");
   const [inviteNote, setInviteNote] = useState("15-minute intro call to align role expectations and next steps.");
 
+  const [pipelineJobId, setPipelineJobId] = useState("");
+  const [pipelineName, setPipelineName] = useState("");
+  const [pipelineEmail, setPipelineEmail] = useState("");
+  const [pipelineSource, setPipelineSource] = useState<"direct" | "invite" | "referral">("direct");
+  const [pipelineScore, setPipelineScore] = useState(0);
+  const [pipelineNote, setPipelineNote] = useState("Strong candidate. Good match for role requirements.");
+
   const [assessJobId, setAssessJobId] = useState("");
   const [assessScorecardId, setAssessScorecardId] = useState("");
   const [assessEmail, setAssessEmail] = useState("");
@@ -87,14 +122,16 @@ export function HiringLabWorkspace() {
   const [assessmentResult, setAssessmentResult] = useState<{ totalScore: number; recommendation: string } | null>(null);
 
   async function loadAll() {
-    const [scoreResp, jobsResp, inviteResp] = await Promise.all([
+    const [scoreResp, jobsResp, inviteResp, pipelineResp] = await Promise.all([
       fetch("/api/hiring/scorecards"),
       fetch("/api/hiring/jobs"),
-      fetch("/api/hiring/invites")
+      fetch("/api/hiring/invites"),
+      fetch("/api/hiring/pipeline")
     ]);
     if (scoreResp.ok) setScorecards((await scoreResp.json()).scorecards ?? []);
     if (jobsResp.ok) setJobs((await jobsResp.json()).jobs ?? []);
     if (inviteResp.ok) setInvites((await inviteResp.json()).invites ?? []);
+    if (pipelineResp.ok) setPipeline((await pipelineResp.json()).candidates ?? []);
   }
 
   useEffect(() => {
@@ -105,7 +142,8 @@ export function HiringLabWorkspace() {
     if (!inviteJobId && jobs[0]) setInviteJobId(jobs[0].id);
     if (!assessJobId && jobs[0]) setAssessJobId(jobs[0].id);
     if (!assessScorecardId && scorecards[0]) setAssessScorecardId(scorecards[0].id);
-  }, [jobs, scorecards, inviteJobId, assessJobId, assessScorecardId]);
+    if (!pipelineJobId && jobs[0]) setPipelineJobId(jobs[0].id);
+  }, [jobs, scorecards, inviteJobId, assessJobId, assessScorecardId, pipelineJobId]);
 
   const screenerQuestions = useMemo(
     () => screenerInput.split("\n").map((item) => item.trim()).filter(Boolean),
@@ -259,6 +297,130 @@ export function HiringLabWorkspace() {
             </article>
           ) : null}
 
+          {section === "ATS Pipeline" ? (
+            <article className="card">
+              <h3>ATS Pipeline Board</h3>
+              <p className="page-subtitle">
+                Manage candidates through stages: Applied, Screen, Interview, Offer, Hired, Rejected.
+              </p>
+              <div className="step-grid">
+                <label className="field"><span>Job</span><select value={pipelineJobId} onChange={(e) => setPipelineJobId(e.target.value)}>{jobs.map((j) => <option key={j.id} value={j.id}>{j.title}</option>)}</select></label>
+                <label className="field"><span>Candidate name</span><input className="input" value={pipelineName} onChange={(e) => setPipelineName(e.target.value)} /></label>
+                <label className="field"><span>Candidate email</span><input className="input" value={pipelineEmail} onChange={(e) => setPipelineEmail(e.target.value)} /></label>
+                <label className="field"><span>Source</span><select value={pipelineSource} onChange={(e) => setPipelineSource(e.target.value as "direct" | "invite" | "referral")}><option value="direct">Direct</option><option value="invite">Invite</option><option value="referral">Referral</option></select></label>
+                <label className="field"><span>Score (0-100)</span><input className="input" type="number" min={0} max={100} value={pipelineScore} onChange={(e) => setPipelineScore(Number(e.target.value || 0))} /></label>
+                <label className="field"><span>Note</span><textarea className="input area" value={pipelineNote} onChange={(e) => setPipelineNote(e.target.value)} /></label>
+              </div>
+              <div className="row">
+                <button
+                  type="button"
+                  className="btn solid"
+                  onClick={async () => {
+                    const res = await fetch("/api/hiring/pipeline", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        jobPostId: pipelineJobId,
+                        candidateEmail: pipelineEmail,
+                        candidateName: pipelineName,
+                        source: pipelineSource,
+                        score: pipelineScore,
+                        note: pipelineNote
+                      })
+                    });
+                    if (!res.ok) {
+                      setStatus("Unable to add candidate to pipeline.");
+                      return;
+                    }
+                    setStatus("Candidate added to ATS pipeline.");
+                    setPipelineName("");
+                    setPipelineEmail("");
+                    setPipelineScore(0);
+                    await loadAll();
+                  }}
+                >
+                  Add to Pipeline
+                </button>
+              </div>
+              <div className="hiring-kanban">
+                {pipelineStages.map((stage) => {
+                  const items = pipeline.filter((candidate) => candidate.stage === stage);
+                  return (
+                    <div key={stage} className="hiring-column">
+                      <h4>{stageLabel[stage]} ({items.length})</h4>
+                      <div className="hiring-column-list">
+                        {items.map((candidate) => (
+                          <article key={candidate.id} className="hiring-card">
+                            <strong>{candidate.candidateName}</strong>
+                            <span>{candidate.candidateEmail}</span>
+                            <span>Score: {candidate.score}</span>
+                            <span>Source: {candidate.source}</span>
+                            {candidate.note ? <p>{candidate.note}</p> : null}
+                            <div className="row compact">
+                              {stage !== "applied" ? (
+                                <button
+                                  type="button"
+                                  className="btn ghost"
+                                  onClick={async () => {
+                                    const prev = pipelineStages[pipelineStages.indexOf(stage) - 1];
+                                    const res = await fetch("/api/hiring/pipeline", {
+                                      method: "PATCH",
+                                      headers: { "Content-Type": "application/json" },
+                                      body: JSON.stringify({ id: candidate.id, stage: prev })
+                                    });
+                                    setStatus(res.ok ? "Candidate moved to previous stage." : "Unable to move candidate.");
+                                    await loadAll();
+                                  }}
+                                >
+                                  Back
+                                </button>
+                              ) : null}
+                              {stage !== "hired" && stage !== "rejected" ? (
+                                <button
+                                  type="button"
+                                  className="btn solid"
+                                  onClick={async () => {
+                                    const next = pipelineStages[pipelineStages.indexOf(stage) + 1];
+                                    const res = await fetch("/api/hiring/pipeline", {
+                                      method: "PATCH",
+                                      headers: { "Content-Type": "application/json" },
+                                      body: JSON.stringify({ id: candidate.id, stage: next })
+                                    });
+                                    setStatus(res.ok ? "Candidate moved to next stage." : "Unable to move candidate.");
+                                    await loadAll();
+                                  }}
+                                >
+                                  Next
+                                </button>
+                              ) : null}
+                              {stage !== "rejected" ? (
+                                <button
+                                  type="button"
+                                  className="btn ghost"
+                                  onClick={async () => {
+                                    const res = await fetch("/api/hiring/pipeline", {
+                                      method: "PATCH",
+                                      headers: { "Content-Type": "application/json" },
+                                      body: JSON.stringify({ id: candidate.id, stage: "rejected" })
+                                    });
+                                    setStatus(res.ok ? "Candidate marked as rejected." : "Unable to reject candidate.");
+                                    await loadAll();
+                                  }}
+                                >
+                                  Reject
+                                </button>
+                              ) : null}
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </article>
+          ) : null}
+
           {section === "Anti-Scam" ? (
             <article className="card">
               <h3>Scam Risk Scanner</h3>
@@ -396,4 +558,3 @@ export function HiringLabWorkspace() {
     </section>
   );
 }
-

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createCredentialUser, getDefaultRoleForEmail } from "../../../../lib/auth/users";
 import { setSessionCookie } from "../../../../lib/auth/session";
+import { checkRateLimit, getRequestIp } from "../../../../lib/auth/rate-limit";
 
 export async function POST(request: Request) {
   const payload = await request.json().catch(() => null);
@@ -25,6 +26,16 @@ export async function POST(request: Request) {
   const stateRegion = String(payload?.stateRegion ?? "").trim();
   const zipCode = String(payload?.zipCode ?? "").trim();
   const country = String(payload?.country ?? "").trim();
+  const ip = getRequestIp(request);
+  const key = `auth:register:${ip}:${email || "anonymous"}`;
+  const rate = checkRateLimit({ key, limit: 5, windowMs: 60_000 });
+
+  if (!rate.allowed) {
+    return NextResponse.json(
+      { error: "Too many registration attempts. Try again later." },
+      { status: 429, headers: { "Retry-After": String(rate.retryAfterSeconds) } }
+    );
+  }
 
   if (!name || !email || !password) {
     return NextResponse.json({ error: "Name, email, and password are required" }, { status: 400 });

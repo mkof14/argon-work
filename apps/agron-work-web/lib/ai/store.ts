@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { resolveDataFile } from "../runtime/data-path";
+import { readJsonFromPostgres, writeJsonToPostgres } from "../runtime/postgres-kv";
 
 export type AiApplyMode = "preview" | "auto";
 export type AiApplicationStatus =
@@ -89,6 +90,15 @@ async function ensureStore() {
 }
 
 export async function readAiStore() {
+  const fromDb = await readJsonFromPostgres<Partial<AiStore>>("ai-store");
+  if (fromDb) {
+    return {
+      configs: fromDb.configs ?? [],
+      applications: fromDb.applications ?? [],
+      events: fromDb.events ?? []
+    } as AiStore;
+  }
+
   const storeFile = await ensureStore();
   const raw = await readFile(storeFile, "utf8");
   const parsed = JSON.parse(raw) as Partial<AiStore>;
@@ -100,6 +110,7 @@ export async function readAiStore() {
 }
 
 export async function writeAiStore(store: AiStore) {
+  if (await writeJsonToPostgres("ai-store", store)) return;
   const storeFile = await ensureStore();
   await writeFile(storeFile, `${JSON.stringify(store, null, 2)}\n`, "utf8");
 }

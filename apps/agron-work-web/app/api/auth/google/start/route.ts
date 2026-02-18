@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
 import { createGoogleState, setGoogleState } from "../../../../../lib/auth/session";
+import { checkRateLimit, getRequestIp } from "../../../../../lib/auth/rate-limit";
 import { getSiteUrl } from "../../../../../lib/site";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const ip = getRequestIp(request);
+  const rate = checkRateLimit({ key: `auth:google:start:${ip}`, limit: 20, windowMs: 60_000 });
+  if (!rate.allowed) {
+    return NextResponse.redirect(`${getSiteUrl()}/auth/login?error=rate_limited`);
+  }
+
   const clientId = process.env.GOOGLE_CLIENT_ID;
 
   if (!clientId) {

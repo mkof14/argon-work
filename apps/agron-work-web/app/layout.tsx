@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { WorkHeader } from "../components/WorkHeader";
 import { WorkFooter } from "../components/WorkFooter";
 import { SiteTopicGuide } from "../components/SiteTopicGuide";
+import { RouteThemeSync } from "../components/RouteThemeSync";
 import { getSiteUrl } from "../lib/site";
 import "./globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" data-theme="light">
       <body>
+        <RouteThemeSync />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

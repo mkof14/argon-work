@@ -22,6 +22,9 @@ Set in Vercel Project Settings -> Environment Variables:
 
 - `NEXT_PUBLIC_WORK_SITE_URL=https://<your-vercel-domain>`
 - `AGRON_WORK_AUTH_SECRET=<strong-random-secret>`
+- `AGRON_WORK_USE_POSTGRES=1`
+- `AGRON_WORK_DATABASE_URL=<postgres-connection-string>`
+- `AGRON_WORK_DB_TABLE=agron_work_kv`
 - `AGRON_WORK_DATA_DIR=/tmp/agron-work-data`
 - `AGRON_WORK_ADMIN_EMAILS=<comma-separated-admin-emails>`
 - `AGRON_WORK_SUPER_ADMIN_EMAILS=<comma-separated-super-admin-emails>`
@@ -32,7 +35,12 @@ Set in Vercel Project Settings -> Environment Variables:
 
 ## 4) Notes About Storage
 
-Current app storage uses JSON files. In Vercel serverless:
+Storage now supports PostgreSQL first, JSON fallback:
+
+- when `AGRON_WORK_USE_POSTGRES=1` and DB URL is set, app reads/writes from Postgres table,
+- when DB is disabled or unavailable, app falls back to JSON file store.
+
+JSON fallback behavior in Vercel serverless:
 
 - writable path is ephemeral (`/tmp`),
 - data is not persistent across deployments/cold starts.
@@ -40,7 +48,14 @@ Current app storage uses JSON files. In Vercel serverless:
 This project now auto-resolves writable storage and supports:
 - `AGRON_WORK_DATA_DIR=/tmp/agron-work-data`
 
-For production persistence, migrate stores to managed DB (Postgres/Supabase).
+Recommended production mode:
+- enable Postgres (`AGRON_WORK_USE_POSTGRES=1`),
+- use managed DB (Vercel Postgres / Neon / Supabase),
+- keep JSON fallback only for local/dev safety.
+
+Optional one-time data migration from JSON to Postgres:
+- run from app folder: `npm run migrate:postgres`
+- required envs: `AGRON_WORK_DATABASE_URL` (or `DATABASE_URL`) and optional `AGRON_WORK_DB_TABLE`
 
 ## 5) Security/SEO Included
 

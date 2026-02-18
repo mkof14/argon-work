@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { HomeSearch } from "../components/HomeSearch";
+import { HomeHeroAnimation } from "../components/HomeHeroAnimation";
 
 export default function HomePage() {
   return (
     <section>
       <article className="hero">
-        <p className="kicker">AGRON Work</p>
-        <h1>Who gives work and who is looking for work</h1>
-        <p>
-          One simple platform for direct connection between employers and professionals in drones, robotics, AI, data, and automation.
-        </p>
+        <div className="hero-topline">
+          <div>
+            <p className="kicker">AGRON Work</p>
+            <h1>Who gives work and who is looking for work</h1>
+            <p>
+              One simple platform for direct connection between employers and professionals in drones, robotics, AI, data, and automation.
+            </p>
+          </div>
+          <HomeHeroAnimation />
+        </div>
         <div className="hero-sides">
           <article className="card hero-side-card">
             <h3>I am hiring</h3>

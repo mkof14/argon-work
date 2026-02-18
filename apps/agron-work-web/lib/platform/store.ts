@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
 import { resolveDataFile } from "../runtime/data-path";
+import { readJsonFromPostgres, writeJsonToPostgres } from "../runtime/postgres-kv";
 
 export type Role =
   | "user"
@@ -635,6 +636,24 @@ async function ensureStore() {
 }
 
 export async function readPlatformStore() {
+  const fromDb = await readJsonFromPostgres<Partial<PlatformStore>>("platform-store");
+  if (fromDb) {
+    const updatedAt = now();
+    return {
+      profiles: fromDb.profiles ?? [],
+      resumes: fromDb.resumes ?? [],
+      messages: fromDb.messages ?? [],
+      marketingAssets: fromDb.marketingAssets ?? [],
+      emailTemplates: withDefaultTemplates(fromDb.emailTemplates),
+      monitoring: fromDb.monitoring ?? [],
+      stats: { ...defaultStats(updatedAt), ...(fromDb.stats ?? {}) },
+      finance: { ...defaultFinance(updatedAt), ...(fromDb.finance ?? {}) },
+      health: { ...defaultHealth(updatedAt), ...(fromDb.health ?? {}) },
+      roleInvitations: fromDb.roleInvitations ?? [],
+      roleAudit: fromDb.roleAudit ?? []
+    };
+  }
+
   const storeFile = await ensureStore();
   const raw = await readFile(storeFile, "utf8");
   const parsed = JSON.parse(raw) as Partial<PlatformStore>;
@@ -656,6 +675,7 @@ export async function readPlatformStore() {
 }
 
 export async function writePlatformStore(store: PlatformStore) {
+  if (await writeJsonToPostgres("platform-store", store)) return;
   const storeFile = await ensureStore();
   await writeFile(storeFile, `${JSON.stringify(store, null, 2)}\n`, "utf8");
 }

@@ -98,6 +98,10 @@ const faqSections = [
       {
         q: "How do I track applications?",
         a: "Use Dashboard and Messages to track statuses and communication."
+      },
+      {
+        q: "Is there a dedicated search API now?",
+        a: "Yes. AGRON Work includes a unified search endpoint that combines role catalog results and published hiring jobs with relevance scoring."
       }
     ]
   },
@@ -140,6 +144,35 @@ const faqSections = [
       {
         q: "Are AI decisions transparent?",
         a: "Yes. The platform includes explainability-oriented notes and structured decision logic."
+      },
+      {
+        q: "Does Hiring Lab include ATS pipeline stages?",
+        a: "Yes. ATS Pipeline supports candidate flow across Applied, Screen, Interview, Offer, Hired, and Rejected stages with notes and score updates."
+      }
+    ]
+  },
+  {
+    title: "Learning Center and Training",
+    items: [
+      {
+        q: "What is Learning Center?",
+        a: "Learning Center is a guided training page with grouped tracks from first onboarding steps to advanced hiring and admin workflows."
+      },
+      {
+        q: "Where do I start if I am new?",
+        a: "Start with Track 1: First Steps, then continue with Job Search and Applications. Each track includes modules and direct action buttons."
+      },
+      {
+        q: "Does Learning Center include employer training?",
+        a: "Yes. It includes dedicated groups for Employer Quick Start and ATS Pipeline operations."
+      },
+      {
+        q: "Can I use Learning Center for team onboarding?",
+        a: "Yes. The grouped modules are designed for self-onboarding and team onboarding routines."
+      },
+      {
+        q: "Where do I open Learning Center?",
+        a: "Use the Learning Center link in the footer sections and All Pages list."
       }
     ]
   },
@@ -161,6 +194,10 @@ const faqSections = [
       {
         q: "Where can I review legal policies?",
         a: "Open Legal Center for Terms, Privacy, Cookies, AI Disclosure, Accessibility, and related documents."
+      },
+      {
+        q: "Is there API-level protection against auth abuse?",
+        a: "Yes. Authentication endpoints include request rate limiting and controlled responses for repeated attempts."
       }
     ]
   },

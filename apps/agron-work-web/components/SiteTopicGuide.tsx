@@ -126,13 +126,26 @@ function pickGuide(pathname: string): TopicGuide {
   return defaultGuide;
 }
 
+function withLearningAction(pathname: string, guide: TopicGuide): TopicGuide {
+  if (pathname.startsWith("/learning-center")) {
+    return guide;
+  }
+  if (guide.actions.some((action) => action.href === "/learning-center")) {
+    return guide;
+  }
+  return {
+    ...guide,
+    actions: [{ label: "Learning Center", href: "/learning-center" }, ...guide.actions]
+  };
+}
+
 export function SiteTopicGuide() {
   const pathname = usePathname();
-  const guide = useMemo(() => pickGuide(pathname), [pathname]);
+  const guide = useMemo(() => withLearningAction(pathname, pickGuide(pathname)), [pathname]);
 
   return (
     <aside className="card topic-guide">
-      <details className="clean-collapse">
+      <details className="clean-collapse" open>
         <summary>{guide.title}</summary>
         <p className="page-subtitle">{guide.description}</p>
         <ul className="legal-list">

@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import { hashPassword } from "./session";
 import type { Role } from "../platform/store";
 import { resolveDataFile } from "../runtime/data-path";
+import { readJsonFromPostgres, writeJsonToPostgres } from "../runtime/postgres-kv";
 
 export type UserRecord = {
   id: string;
@@ -64,12 +65,15 @@ async function ensureStore() {
 }
 
 async function readUsers() {
+  const dbUsers = await readJsonFromPostgres<UserRecord[]>("users");
+  if (dbUsers) return dbUsers;
   const usersFile = await ensureStore();
   const raw = await readFile(usersFile, "utf8");
   return JSON.parse(raw) as UserRecord[];
 }
 
 async function writeUsers(users: UserRecord[]) {
+  if (await writeJsonToPostgres("users", users)) return;
   const usersFile = await ensureStore();
   await writeFile(usersFile, `${JSON.stringify(users, null, 2)}\n`, "utf8");
 }
