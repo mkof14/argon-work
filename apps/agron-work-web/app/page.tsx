@@ -62,6 +62,7 @@ export default function HomePage() {
       <div className="row">
         <Link className="btn ghost" href="/specialties">Browse work types</Link>
         <Link className="btn ghost" href="/ai-tools">Open AI tools</Link>
+        <Link className="btn ghost" href="/application-boost">Open Application Boost</Link>
         <Link className="btn ghost" href="/jobs">Open jobs and projects</Link>
       </div>
     </section>

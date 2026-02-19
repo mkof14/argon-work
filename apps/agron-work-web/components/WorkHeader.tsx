@@ -44,6 +44,7 @@ export function WorkHeader() {
           <div className="nav-dropdown-menu">
             <Link href="/jobs">Jobs</Link>
             <Link href="/learning-center">Learning Center</Link>
+            <Link href="/application-boost">Application Boost</Link>
             <Link href="/talent">For Job Seekers</Link>
             <Link href="/ai-tools">AI Tools</Link>
             <Link href="/hiring-lab">Hiring Lab</Link>

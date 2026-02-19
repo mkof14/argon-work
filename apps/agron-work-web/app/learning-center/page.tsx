@@ -6,9 +6,10 @@ const firstSteps = [
   "Upload profile photo and resume document.",
   "Select target domains, levels, and work mode.",
   "Run first search and save at least 3 relevant roles.",
-  "Use AI match and cover-letter tools before applying.",
+  "Use AI match and ATS resume checks before applying.",
+  "Generate role-specific resume and cover-letter drafts.",
   "Send first applications and start direct communication.",
-  "Track pipeline status in dashboard and messages."
+  "Track pipeline status and reminders in Application Hub."
 ] as const;
 
 const learningTracks = [
@@ -34,18 +35,35 @@ const learningTracks = [
     modules: [
       "Use filters: domain, level, remote/hybrid, employment type.",
       "Compare jobs by salary range, mode, and role requirements.",
-      "Use AI tools for match checks and cover-letter drafts.",
-      "Apply to selected jobs and track progress in dashboard/messages.",
+      "Use AI tools for role-fit checks, ATS prep, and cover-letter drafts.",
+      "Apply to selected jobs and track progress in Application Hub/messages.",
       "Improve profile and resume based on rejection/feedback patterns."
     ],
     actions: [
       { href: "/search", label: "Find jobs" },
       { href: "/ai-tools", label: "Open AI tools" },
-      { href: "/messages", label: "Track communication" }
+      { href: "/messages", label: "Track communication" },
+      { href: "/faq", label: "Open FAQ" }
     ]
   },
   {
-    title: "Track 3: Employer Quick Start",
+    title: "Track 3: AI Application Copilot",
+    summary: "Use AI Copilot safely: boost speed while keeping full human control.",
+    modules: [
+      "Define preferred domains, roles, salary floor, and work mode.",
+      "Set auto-assist mode: preview-first or assisted submission.",
+      "Set guardrails: daily limits and minimum role-fit threshold.",
+      "Review generated resume and cover-letter suggestions before submit.",
+      "Audit Copilot actions and disable automation any time."
+    ],
+    actions: [
+      { href: "/ai-tools", label: "Open AI Copilot" },
+      { href: "/profile", label: "Update profile data" },
+      { href: "/faq", label: "Read AI safety FAQ" }
+    ]
+  },
+  {
+    title: "Track 4: Employer Quick Start",
     summary: "Build hiring flow from role design to direct invites.",
     modules: [
       "Open Hiring Lab and create role scorecards.",
@@ -61,7 +79,7 @@ const learningTracks = [
     ]
   },
   {
-    title: "Track 4: ATS Pipeline Operations",
+    title: "Track 5: ATS Pipeline Operations",
     summary: "Manage candidates across hiring stages in one board.",
     modules: [
       "Add candidate to pipeline with source and score.",
@@ -77,7 +95,23 @@ const learningTracks = [
     ]
   },
   {
-    title: "Track 5: Admin and Platform Operations",
+    title: "Track 6: ATS Resume and Content Optimization",
+    summary: "Optimize resume and application content for stronger shortlist quality.",
+    modules: [
+      "Extract role requirements and critical keywords from vacancy text.",
+      "Map required skills to your existing profile and resume evidence.",
+      "Generate targeted resume version for each high-priority role.",
+      "Generate concise role-specific cover letters with measurable outcomes.",
+      "Validate readability, consistency, and recruiter relevance before apply."
+    ],
+    actions: [
+      { href: "/ai-tools", label: "Open resume optimizer" },
+      { href: "/profile", label: "Edit resume sections" },
+      { href: "/search", label: "Apply to matched roles" }
+    ]
+  },
+  {
+    title: "Track 7: Admin and Platform Operations",
     summary: "For admins: governance, monitoring, templates, and quality control.",
     modules: [
       "Configure roles and permission levels.",
@@ -93,7 +127,7 @@ const learningTracks = [
     ]
   },
   {
-    title: "Track 6: Security and Trust",
+    title: "Track 8: Security and Trust",
     summary: "Protect account quality and reduce hiring risk.",
     modules: [
       "Use strong account credentials and keep profile data accurate.",
@@ -109,14 +143,16 @@ const learningTracks = [
     ]
   },
   {
-    title: "Track 7: Performance and Growth",
+    title: "Track 9: Performance and Growth",
     summary: "Improve conversion from profile to interview and offer.",
     modules: [
       "Measure apply-to-response ratio weekly.",
+      "Measure application-to-interview conversion per role family.",
       "Update profile and resume using role-specific keywords.",
       "Prioritize roles by realistic match score and salary fit.",
       "Use saved jobs and application cadence planning.",
-      "Keep messaging professional and fast."
+      "Keep messaging professional and fast.",
+      "Use reminder cadence and follow-up templates to reduce drop-off."
     ],
     actions: [
       { href: "/dashboard", label: "Open dashboard" },
@@ -125,7 +161,7 @@ const learningTracks = [
     ]
   },
   {
-    title: "Track 8: Team Onboarding Blueprint",
+    title: "Track 10: Team Onboarding Blueprint",
     summary: "Use these modules for internal training and new team members.",
     modules: [
       "Assign onboarding owners by role (job seeker, employer, admin).",
@@ -150,6 +186,7 @@ const recommendations = [
       "Use domain-specific keywords (UAV, ROS2, MLOps, SCADA, etc.).",
       "Apply in focused batches (5-10 high-match roles).",
       "Use AI tools to improve role fit explanation and cover letter.",
+      "Use ATS checks and job-specific resume versions for top roles.",
       "Reply to messages within 24 hours to keep momentum."
     ],
     links: [
@@ -186,6 +223,36 @@ const recommendations = [
       { href: "/admin", label: "Admin Panel" },
       { href: "/support", label: "Support" },
       { href: "/legal", label: "Legal" }
+    ]
+  },
+  {
+    title: "For Application Boost",
+    points: [
+      "Use AI Copilot in preview mode first, then enable assisted mode.",
+      "Set strict minimum role-fit score before allowing AI submit.",
+      "Use dedicated resume variant for each priority vacancy.",
+      "Track follow-up reminders and stalled applications daily.",
+      "Audit conversion weekly and remove low-value workflows."
+    ],
+    links: [
+      { href: "/ai-tools", label: "AI Copilot" },
+      { href: "/dashboard", label: "Application Hub" },
+      { href: "/faq", label: "Boost FAQ" }
+    ]
+  },
+  {
+    title: "For Trust, Legal, and Billing",
+    points: [
+      "Read privacy, terms, cookies, and AI disclosure before large campaigns.",
+      "Align billing plans and access rights with actual team structure.",
+      "Store communication and decision logs for transparency.",
+      "Limit access to sensitive profile and finance data by role.",
+      "Review policy updates monthly."
+    ],
+    links: [
+      { href: "/legal", label: "Legal Center" },
+      { href: "/admin", label: "Admin Governance" },
+      { href: "/support", label: "Support" }
     ]
   }
 ] as const;
@@ -269,8 +336,10 @@ export default function LearningCenterPage() {
           <ol className="legal-list">
             <li>First Steps</li>
             <li>Job Search and Applications</li>
+            <li>AI Application Copilot</li>
             <li>Employer Quick Start</li>
             <li>ATS Pipeline Operations</li>
+            <li>ATS Resume and Content Optimization</li>
             <li>Admin and Platform Operations</li>
             <li>Security and Trust</li>
             <li>Performance and Growth</li>

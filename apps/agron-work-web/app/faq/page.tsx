@@ -100,6 +100,18 @@ const faqSections = [
         a: "Use Dashboard and Messages to track statuses and communication."
       },
       {
+        q: "What is Application Hub?",
+        a: "Application Hub is a centralized view of all your applications with stages, last activity, reminders, and next actions."
+      },
+      {
+        q: "Can I set follow-up reminders for applications?",
+        a: "Yes. You can set reminder cadence to avoid missed follow-ups after apply, interview, or offer stages."
+      },
+      {
+        q: "Can I see why a role has high or low match score?",
+        a: "Yes. Match score is explainable by skill fit, role keywords, seniority, work mode, and location alignment."
+      },
+      {
         q: "Is there a dedicated search API now?",
         a: "Yes. AGRON Work includes a unified search endpoint that combines role catalog results and published hiring jobs with relevance scoring."
       }
@@ -134,6 +146,26 @@ const faqSections = [
         a: "AI match checks, cover-letter generation, interview preparation, and controlled auto-apply workflows."
       },
       {
+        q: "What is AI Application Copilot?",
+        a: "AI Application Copilot helps prepare, optimize, and submit applications with user confirmation and transparent action history."
+      },
+      {
+        q: "Does Copilot send applications without my control?",
+        a: "No. You can choose preview mode with manual approval or assisted mode with strict limits and stop controls."
+      },
+      {
+        q: "Can Copilot auto-fill application forms?",
+        a: "Yes. Copilot can prefill role-relevant profile and resume fields, then ask for confirmation before submission."
+      },
+      {
+        q: "Is there ATS resume optimization?",
+        a: "Yes. Resume Tailor aligns your resume to job requirements and highlights missing keywords and skills."
+      },
+      {
+        q: "Can I create job-specific resume and cover letter versions?",
+        a: "Yes. You can generate role-specific versions and keep each version linked to a target vacancy."
+      },
+      {
         q: "Can I set safe limits for auto-apply?",
         a: "Yes. Configure daily limits, minimum match score, mode (preview/auto), work modes, and domain preferences."
       },
@@ -148,6 +180,10 @@ const faqSections = [
       {
         q: "Does Hiring Lab include ATS pipeline stages?",
         a: "Yes. ATS Pipeline supports candidate flow across Applied, Screen, Interview, Offer, Hired, and Rejected stages with notes and score updates."
+      },
+      {
+        q: "Can employers use AI for shortlist support without black-box decisions?",
+        a: "Yes. AI suggestions are decision support only, with explainable factors and human final approval."
       }
     ]
   },
@@ -192,6 +228,18 @@ const faqSections = [
         a: "Visibility is controlled by your settings and platform access logic."
       },
       {
+        q: "How is my data used in AI features?",
+        a: "AI uses your data only for platform functions such as matching, optimization, and recommendations under configured privacy controls."
+      },
+      {
+        q: "Can I disable AI assistance for my account?",
+        a: "Yes. You can reduce or disable AI assistance in settings and continue using standard manual workflows."
+      },
+      {
+        q: "Do you share candidate data with third parties for unrelated ads?",
+        a: "No. Data sharing is limited by platform policies, legal requirements, and user-controlled permissions."
+      },
+      {
         q: "Where can I review legal policies?",
         a: "Open Legal Center for Terms, Privacy, Cookies, AI Disclosure, Accessibility, and related documents."
       },
@@ -209,6 +257,14 @@ const faqSections = [
         a: "Overview metrics, marketing assets, technical checks, email template library, access rights, messages, statistics, finance, and monitoring."
       },
       {
+        q: "Are there subscription and billing transparency pages?",
+        a: "Yes. Billing, renewals, payment terms, and service conditions should be presented through dedicated legal and pricing pages."
+      },
+      {
+        q: "Can admin review financial KPIs by period?",
+        a: "Yes. Finance includes daily, monthly, yearly inflow/outflow and activity indicators for decision support."
+      },
+      {
         q: "Can admin manage roles and permissions?",
         a: "Yes. Admin rights support role assignment, invites, and role audit tracking."
       },
@@ -223,6 +279,31 @@ const faqSections = [
       {
         q: "Where can I get support for billing or enterprise setup?",
         a: "Use Contact and Support pages for billing, enterprise onboarding, and technical assistance."
+      }
+    ]
+  },
+  {
+    title: "Application Boost and Conversion",
+    items: [
+      {
+        q: "What is Application Boost?",
+        a: "Application Boost is a guided workflow that improves application quality through role-fit analysis, ATS optimization, and message quality checks."
+      },
+      {
+        q: "How can I increase interview rate?",
+        a: "Focus on high-fit roles, tailor resume per vacancy, use concise measurable achievements, and maintain fast follow-up communication."
+      },
+      {
+        q: "What is the safest way to use auto-apply features?",
+        a: "Use preview mode, set strict daily limits, require minimum match score, and keep manual approval enabled for final submit."
+      },
+      {
+        q: "Can employers measure funnel quality?",
+        a: "Yes. Track conversion from application to interview, offer, and hire, then optimize bottlenecks per stage."
+      },
+      {
+        q: "Where do I learn the full boost workflow?",
+        a: "Open Learning Center and follow AI Copilot, ATS Optimization, and Application Hub modules."
       }
     ]
   }
